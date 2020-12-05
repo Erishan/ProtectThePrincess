@@ -8,13 +8,11 @@ public class AttackToInvaders : MonoBehaviour
     Attacker attacker;
     bool onlineAttacker;
     Shooter shooter;
-    float damage = 10f;
     private void Start()
     {
         shooter = GetComponent<Shooter>();
         animator = GetComponent<Animator>();
         attacker = GetComponent<Attacker>();
-        //shooter = GetComponent<Shooter>();
     }
 
     private void Update()
@@ -25,33 +23,18 @@ public class AttackToInvaders : MonoBehaviour
             Debug.Log("Online Attacker is " + onlineAttacker);
             if (onlineAttacker)
             {
-                //Debug.Log("Defender Should Pew PEW");
-                animator.SetBool("isAttacking", true);
-                //shooter.Fire();
+                animator.SetBool("isShooting", true);
             }
             else
             {
-                //Debug.Log("Defender should wait");
-                animator.SetBool("isAttacking", false);
+                animator.SetBool("isShooting", false);
             }
         }
     }
 
-    private void Fire()
-    {
-        shooter.Fire();
-    }
-
-    //private void AttackWithYourKnife(Collider2D otherCollider)
+    //private void Fire()
     //{
-    //    var health = otherCollider.GetComponent<Health>();
-    //    var attacker = otherCollider.GetComponent<Attacker>();
-    //    animator.SetBool("isAttacking", true);
-    //    if (attacker)
-    //    {
-    //        health.DealDamage(damage);
-    //    }
+    //    shooter.Fire();
     //}
 
- 
 }

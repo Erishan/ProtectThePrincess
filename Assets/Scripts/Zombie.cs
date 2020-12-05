@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class Zombie : MonoBehaviour
 {
-    [SerializeField] float damage = 15;
+    [SerializeField] float damage = 15f;
     Attacker attacker;
     //Animator animator;
     // Start is called before the first frame update
     void Start()
     {
         attacker = GetComponent<Attacker>();
-        //animator = GetComponent<Animator>();
     }
 
     private void OnTriggerEnter2D(Collider2D otherCollider)

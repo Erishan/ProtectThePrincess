@@ -14,6 +14,7 @@ public class Attacker : MonoBehaviour
     float getHealth;
     LevelController levelControl;
     Health health;
+    float currentJumping;
     //[SerializeField] Attacker[] attackers;
 
     private void Awake()
@@ -35,7 +36,6 @@ public class Attacker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //transform.Translate(Vector2.left * currentSpeed * Time.deltaTime);
 
         if (animator.GetBool("isAttacking"))
         {
@@ -51,6 +51,19 @@ public class Attacker : MonoBehaviour
     {
         currentSpeed = speed;
         transform.Translate(Vector2.right * currentSpeed * Time.deltaTime);
+    }
+
+    public void SetHighForJumping(float jumping)
+    {
+        StartCoroutine(JumpingSpeed(jumping));
+    }
+
+    IEnumerator JumpingSpeed(float jumping)
+    {
+        transform.Translate(Vector2.up * jumping);
+        yield return new WaitForSeconds(1.5f);
+        transform.Translate(Vector2.down * jumping);
+
     }
 
     public void Attack(GameObject target)

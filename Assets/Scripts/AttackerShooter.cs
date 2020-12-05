@@ -7,51 +7,40 @@ public class AttackerShooter : MonoBehaviour
     [SerializeField] AttackProjectile attackProjectilePrefab;
     [SerializeField] Defender defenderInMyLane;
     //AttackerSpawn attackerSpawner;
-    Defender isDefenderInMyLane;
+    [SerializeField] Defender[] defendersInMyLane;
     Animator animator;
     //bool onlineAttacker = false;
 
     private void Start()
     {
-        //SetLaneSpawner();
+        SetLaneDefender();
         animator = GetComponent<Animator>();
     }
 
+    private void SetLaneDefender()
+    {
+        defendersInMyLane = FindObjectsOfType<Defender>();
+        foreach(Defender defender in defendersInMyLane)
+        {
+            bool isDefenderInMyLane = (Mathf.Abs(defender.transform.position.x - transform.position.x) <= Mathf.Epsilon);
+            if (isDefenderInMyLane)
+            {
+                defenderInMyLane = defender;
+            }
+        }
+    }
 
-    //private void SetLaneSpawner()
-    //{
-    //    AttackerSpawn[] attackerSpawners = FindObjectsOfType<AttackerSpawn>();
-    //    foreach (AttackerSpawn attackerSpawner in attackerSpawners)
-    //    {
-    //        bool IsCloseEnough = (Mathf.Abs(isDefenderInMyLane.transform.position.x - transform.position.x) <= Mathf.Epsilon);
-    //        if (IsCloseEnough)
-    //        {
-    //            isDefenderInMyLane = defenderInMyLane;
-    //        }
-    //    }
-    //}
-
-    //public bool IsAttackerOnLine()
-    //{
-    //    if (defenderInMyLane != null)
-    //    {
-    //        //if (SpawnerInMyLane.transform.childCount <= 0)
-    //        //{
-    //        //    return false;
-    //        //}
-    //        //else
-    //        //{
-    //        //    return true;
-    //        //}
-    //        return true;
-    //    }
-    //    else
-    //    {
-    //        return false;
-    //    }
-    //    //return onlineAttacker;
-
-    //}
+    public bool IsDefenderOnLine()
+    {
+        if(defenderInMyLane != null)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
     public void Fire()
     {

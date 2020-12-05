@@ -33,21 +33,12 @@ public class Shooter : MonoBehaviour
     {
         if (SpawnerInMyLane != null)
         {
-            //if (SpawnerInMyLane.transform.childCount <= 0)
-            //{
-            //    return false;
-            //}
-            //else
-            //{
-            //    return true;
-            //}
             return true;
         }
         else
         {
             return false;
         }
-        //return onlineAttacker;
 
     }
 

@@ -5,13 +5,6 @@ using UnityEngine;
 public class Infighting : MonoBehaviour
 {
     [SerializeField] float damage = 15;
-    //Projectile projectile;
-    //DamageDealer damageDealer;
-    //Animator animator;
-    //GameObject currentTarget;
-    //float getHealth;
-    //LevelController levelControl;
-    //Health health;
 
     Attacker attacker;
 
@@ -20,20 +13,11 @@ public class Infighting : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //animator = GetComponent<Animator>();
         defender = GetComponent<Defender>();
     }
 
     private void OnTriggerEnter2D(Collider2D otherCollider)
     {
-        //var health = otherCollider.GetComponent<Health>();
-        //var attacker = otherCollider.GetComponent<Attacker>();
-        //if (attacker)
-        //{
-        //    health.DealDamage(damage);
-        //    //Destroy(gameObject);
-        //}
-
         GameObject otherObject = otherCollider.gameObject;
         if (otherObject.GetComponent<Attacker>())
         {
